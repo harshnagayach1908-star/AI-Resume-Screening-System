@@ -520,13 +520,13 @@ function App() {
 
           <div className="brand-logo">R<span>✦</span></div>
 
-          <div><strong>Resume<span>AI</span></strong><small>HIRING INTELLIGENCE</small></div>
+          <div><strong>Hire<span>Scope</span></strong><small>TALENT OPERATIONS</small></div>
 
         </div>
 
 
 
-        <p className="nav-label">WORKSPACE</p>
+        <p className="nav-label">YOUR WORKSPACE</p>
 
         <nav className="side-nav">
 
@@ -534,9 +534,9 @@ function App() {
 
             onClick={() => goTo("overview", "Overview")}>▦ <span>Overview</span></button>
 
-          <button className={activeNav === "Screen resume" ? "nav-link active" : "nav-link"}
+          <button className={activeNav === "Evaluate resume" ? "nav-link active" : "nav-link"}
 
-            onClick={() => goTo("screen-workspace", "Screen resume")}>⇧ <span>Screen resume</span></button>
+            onClick={() => goTo("screen-workspace", "Evaluate resume")}>⇧ <span>Evaluate resume</span></button>
 
           <button className={activeNav === "Screening history" ? "nav-link active" : "nav-link"}
 
@@ -560,7 +560,7 @@ function App() {
 
             <div className="user-avatar">RA</div>
 
-            <div><strong>Recruitment workspace</strong><small>Local environment</small></div>
+            <div><strong>Hiring team workspace</strong><small>Local environment</small></div>
 
             <i className={`status-dot ${apiStatus}`} />
 
@@ -576,7 +576,7 @@ function App() {
 
         <header className="topbar">
 
-          <div className="mobile-brand"><div className="brand-logo">R</div><strong>Resume<span>AI</span></strong></div>
+          <div className="mobile-brand"><div className="brand-logo">R</div><strong>Hire<span>Scope</span></strong></div>
 
           <div className="breadcrumb">Workspace <span>/</span> <strong>{activeNav}</strong></div>
 
@@ -596,15 +596,15 @@ function App() {
 
             <div>
 
-              <div className="eyebrow"><span /> AI-POWERED RECRUITMENT</div>
+              <div className="eyebrow"><span /> HIRING WORKSPACE</div>
 
-              <h1>Recruitment <b>Overview</b></h1>
+              <h1>Talent <b>Overview</b></h1>
 
-              <p>Screen resumes, review candidate profiles, and explore model predictions in one workspace.</p>
+              <p>A thoughtful workspace for reviewing candidate profiles and screening activity.</p>
 
             </div>
 
-            <button className="primary-button" onClick={() => goTo("screen-workspace", "Screen resume")}>＋ Screen a resume</button>
+            <button className="primary-button" onClick={() => goTo("screen-workspace", "Evaluate resume")}>＋ Evaluate a resume</button>
 
           </section>
 
@@ -652,14 +652,14 @@ function App() {
 
           <section className="analytics-grid" aria-label="Screening analytics">
             <article className="panel analytics-panel activity-panel">
-              <div className="section-title-row"><div><span className="section-kicker">WORKSPACE INSIGHTS</span><h2>Screening activity</h2><p>Saved records over the last seven days.</p></div><span className="analytics-icon">↗</span></div>
+              <div className="section-title-row"><div><span className="section-kicker">YOUR WORKSPACE INSIGHTS</span><h2>Pipeline activity</h2><p>Saved records over the last seven days.</p></div><span className="analytics-icon">↗</span></div>
               <div className="activity-chart" role="img" aria-label="Daily screening record counts for the last seven days">
                 {weeklyActivity.map((day, index) => <div className="activity-day" key={`${day.label}-${index}`}><span className="activity-count">{day.count || ""}</span><div className="activity-bar-track"><span style={{ height: `${Math.max(day.count ? 12 : 3, (day.count / maxActivity) * 100)}%` }} /></div><small>{day.label}</small></div>)}
               </div>
               <div className="chart-footnote"><span><i className="legend-dot" /> Saved screenings</span><span>Last 7 days</span></div>
             </article>
             <article className="panel analytics-panel outcome-panel">
-              <div className="section-title-row"><div><span className="section-kicker">MODEL SNAPSHOT</span><h2>Prediction overview</h2><p>Based on records currently available.</p></div><span className="analytics-icon">◌</span></div>
+              <div className="section-title-row"><div><span className="section-kicker">MODEL SNAPSHOT</span><h2>Candidate outcomes</h2><p>Based on records currently available.</p></div><span className="analytics-icon">◌</span></div>
               <div className="outcome-summary"><div className="outcome-ring" style={{ "--ratio": `${history.length ? (shortlisted / history.length) * 100 : 0}%` }}><div><strong>{history.length ? Math.round((shortlisted / history.length) * 100) : 0}%</strong><small>shortlisted</small></div></div>
                 <div className="outcome-legend"><div><span className="legend-swatch shortlist-swatch"/><span>Shortlisted</span><strong>{shortlisted}</strong></div><div><span className="legend-swatch other-swatch"/><span>Other results</span><strong>{history.length - shortlisted}</strong></div><div><span className="legend-swatch score-swatch"/><span>With probability</span><strong>{scoredHistory.length}</strong></div></div></div>
               <div className="average-score"><span>Average recorded probability</span><strong>{averageScore === null ? "—" : `${averageScore.toFixed(1)}%`}</strong></div>
@@ -673,7 +673,7 @@ function App() {
 
               <div className="panel-heading-icon">▤</div>
 
-              <div><h2>Screen a candidate</h2><p>Upload a resume, review the extracted details, and run the model.</p></div>
+              <div><h2>Evaluate a candidate</h2><p>Upload a resume, review the extracted details, and run the model.</p></div>
 
               <span className="step-count">3-step workflow</span>
 
@@ -809,7 +809,7 @@ function App() {
 
           <section className="panel history-panel" id="screening-history">
 
-            <div className="panel-heading history-heading"><div><h2>Recent screening activity</h2><p>Saved screening records from your database.</p></div><span className="record-count">{history.length} records</span></div>
+            <div className="panel-heading history-heading"><div><h2>Recent candidate reviews</h2><p>Saved screening records from your database.</p></div><span className="record-count">{history.length} records</span></div>
 
             <div className="history-tools">
 
@@ -849,7 +849,7 @@ function App() {
 
           {selectedCandidate && <div className="detail-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setSelectedCandidate(null); }}><section className="candidate-detail" role="dialog" aria-modal="true" aria-labelledby="candidate-detail-title"><div className="detail-header"><div><span className="section-kicker">SCREENING RECORD</span><h2 id="candidate-detail-title">Candidate details</h2><p>Saved information returned by the screening history API.</p></div><button className="icon-button" onClick={() => setSelectedCandidate(null)} aria-label="Close candidate details">×</button></div><div className="detail-profile"><div className="detail-avatar">{String(selectedCandidate.name || "C").slice(0, 1).toUpperCase()}</div><div className="detail-name"><strong>{selectedCandidate.name}</strong><span>{selectedCandidate.fileName}</span></div><span className={`table-result ${/shortlist/i.test(selectedCandidate.result) ? "positive" : ""}`}>{selectedCandidate.result}</span></div><div className="detail-metrics"><div><span>Shortlisted probability</span><strong>{Number.isFinite(selectedCandidate.score) ? `${Math.max(0, Math.min(100, selectedCandidate.score)).toFixed(2)}%` : "N/A"}</strong></div><div><span>Screened at</span><strong>{selectedCandidate.time}</strong></div><div><span>Record ID</span><strong>{selectedCandidate.id ?? "Not provided"}</strong></div></div><div className="detail-fields-heading"><h3>Available candidate fields</h3><span>From saved record</span></div>{getCandidateDetails(selectedCandidate).length ? <dl className="detail-fields">{getCandidateDetails(selectedCandidate).map(([key, value]) => <div key={key}><dt>{key.replace(/_/g, " ")}</dt><dd>{String(value)}</dd></div>)}</dl> : <div className="detail-empty"><strong>No additional profile fields in this history response</strong><p>The saved history endpoint currently provides the prediction summary only. To show the full extracted resume profile here, the backend history response would need to include those fields.</p></div>}<p className="detail-disclaimer">Use this record as decision support only. Verify candidate information and keep a human reviewer involved.</p></section></div>}
 
-          <footer className="app-footer"><strong>ResumeAI</strong><span>AI-assisted screening · Human review required</span><span>React UI · Flask API</span></footer>
+          <footer className="app-footer"><strong>HireScope</strong><span>AI-assisted screening · Human review required</span><span>React UI · Flask API</span></footer>
 
         </div>
 
